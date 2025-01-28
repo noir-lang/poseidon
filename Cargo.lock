@@ -1327,7 +1327,7 @@ dependencies = [
 [[package]]
 name = "noir-runner"
 version = "0.1.0"
-source = "git+https://github.com/jtriley-eth/noir-runner?branch=main#5aa065f62be20b92a9a32f22b5dd676b4634f67f"
+source = "git+https://github.com/noir-lang/noir-runner?branch=main#2655620c6d0537bf6b4ddca2896283861090504f"
 dependencies = [
  "acvm",
  "bn254_blackbox_solver",
