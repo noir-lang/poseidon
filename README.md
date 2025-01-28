@@ -1,25 +1,10 @@
-# noir-library-starter
+# Poseidon Hashing Library
 
-This repository is a template used by the noir-lang org when creating internally maintained libraries.
-
-This provides out of the box:
-
-- A simple CI setup to test and format the library
-- A canary flagging up compilation failures on nightly releases.
-- A [release-please](https://github.com/googleapis/release-please) setup to ease creating releases for the library.
-- Contributing guidelines specified in [CONTRIBUTING.md](CONTRIBUTING.md)
-
-Feel free to use this template as a starting point to create your own Noir libraries.
-
----
-
-# LIBRARY_NAME
-
-Add a brief description of the library
+This package contains the Poseidon hashing interface, formerly in the Noir standard library.
 
 ## Noir version compatibility
 
-This library is tested to work as of Noir version 0.36.0 & 1.0.0-beta.x.
+This library is tested to work as of Noir version 0.36.0.
 
 ## Benchmarks
 
@@ -39,12 +24,5 @@ In your _Nargo.toml_ file, add the version of this library you would like to ins
 
 ```toml
 [dependencies]
-LIBRARY = { tag = "v0.1.0", git = "https://github.com/noir-lang/LIBRARY_NAME" }
+poseidon = { tag = "v0.1.0", git = "https://github.com/noir-lang/poseidon" }
 ```
-
-## `library`
-
-### Usage
-
-`PLACEHOLDER`
-
