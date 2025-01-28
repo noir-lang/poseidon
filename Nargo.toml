@@ -1,0 +1,7 @@
+[package]
+name = "noir_library"
+type = "lib"
+authors = [""]
+compiler_version = ">=0.34.0"
+
+[dependencies]

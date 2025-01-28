@@ -1,0 +1,8 @@
+[package]
+name = "noir_library"
+version = "0.1.0"
+edition = "2021"
+
+[dev-dependencies]
+proptest = "1.2.0"
+noir-runner = { git = "https://github.com/noir-lang/noir-runner", branch = "main" }
