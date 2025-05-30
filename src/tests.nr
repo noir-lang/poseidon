@@ -1,4 +1,5 @@
 use super::poseidon;
+use std::hash::Hasher;
 
 #[test]
 fn reference_impl_test_vectors() {
@@ -31,4 +32,9 @@ fn reference_impl_test_vectors() {
             "Failed to reproduce output for [0, 1, 2, 3, 4]",
         );
     }
+}
+
+#[export]
+pub fn test_hash_2(input: [Field; 2]) -> Field {
+    poseidon::bn254::hash_2(input)
 }
