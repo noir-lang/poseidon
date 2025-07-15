@@ -139,7 +139,7 @@ fn absorb<let T: u32, let N: u32, let X: u32, let O: u32>(
 
     for k in 0..msg.len() {
         // Add current block to state
-        state[capacity + i] += msg[k];
+        state[(capacity + i) as u32] += msg[k];
         i = i + 1;
         // Enough to absorb
         if i == rate {
