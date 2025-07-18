@@ -24,5 +24,5 @@ In your _Nargo.toml_ file, add the version of this library you would like to ins
 
 ```toml
 [dependencies]
-poseidon = { tag = "v0.1.0", git = "https://github.com/noir-lang/poseidon" }
+poseidon = { tag = "v0.1.1", git = "https://github.com/noir-lang/poseidon" }
 ```
