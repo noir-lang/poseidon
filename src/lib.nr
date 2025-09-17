@@ -3,5 +3,6 @@ pub mod poseidon2;
 
 mod bench;
 mod tests;
+mod oracle_tests;
 
 pub use std::hash::poseidon2_permutation;

@@ -1,0 +1,33 @@
+{
+  "name": "poseidon-oracle-server",
+  "version": "1.0.0",
+  "description": "JSON RPC server for Poseidon2 oracle calls using bb.js",
+  "main": "dist/oracle_server.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/oracle_server.js",
+    "dev": "yarn ts-node oracle_server.ts",
+    "watch": "yarn ts-node --watch oracle_server.ts",
+    "clean": "rm -rf dist",
+    "test:oracle": "nargo test --oracle-resolver http://localhost:5555",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@aztec/bb.js": "^1.2.1",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.19.2",
+    "@types/cors": "^2.8.13",
+    "@types/express": "^4.17.17",
+    "@types/node": "^20.4.5",
+    "nodemon": "^3.0.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
