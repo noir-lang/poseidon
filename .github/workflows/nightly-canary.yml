@@ -24,8 +24,21 @@ jobs:
         with:
           toolchain: nightly
 
-      - name: Run Noir tests
-        run: nargo test
+      - name: Setup Node.js and install dependencies
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.15.0
+          cache: 'yarn'
+          cache-dependency-path: 'yarn.lock'
+      
+      - name: Install dependencies
+        run: |
+          yarn --immutable
+            
+      - name: Run all tests (including oracle tests)
+        run: |
+          cd scripts
+          ./fuzz-test.sh
 
       - name: Alert on dead links
         uses: JasonEtco/create-an-issue@v2
