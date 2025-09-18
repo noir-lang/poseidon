@@ -31,7 +31,7 @@ check_dependencies() {
 
 # Install Node.js dependencies
 install_dependencies() {
-    echo "🔧 Setting up Node.js dependencies..."
+    echo "Setting up Node.js dependencies..."
     if [ ! -d "node_modules" ]; then
         echo "Installing Node.js dependencies..."
         yarn install
