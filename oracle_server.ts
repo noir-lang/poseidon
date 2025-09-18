@@ -107,36 +107,32 @@ async function handleForeignCall(params: any[]): Promise<ForeignCallResult> {
   }
 }
 
+function hexToBigInt(hex: string): bigint {
+    // normalize
+    let clean = hex.trim().toLowerCase();
+    if (clean.startsWith("0x")) {
+      clean = clean.slice(2);
+    }
+    if (!/^[0-9a-f]+$/.test(clean)) {
+      throw new Error("Invalid hex string: " + hex);
+    }
+    return BigInt("0x" + clean);
+  }
+
 async function handlePoseidon2Hash(inputs: string[][]): Promise<ForeignCallResult> {
   try {
     // Extract the input array from the first parameter
     const inputArray = inputs[0] || [];
     
-    // Convert string inputs to Fr objects
-    const fieldInputs: Fr[] = inputArray.map((input: string) => {
-      if (typeof input === 'string') {
-        const num = parseInt(input, 10);
-        if (!isNaN(num)) {
-          return new Fr(BigInt(num));
-        } else {
-          return new Fr(BigInt(input));
-        }
-      } else {
-        throw new Error(`Invalid input type: ${typeof input}`);
-      }
-    });
-    
-    // Filter out zero values to get the actual input length
-    const nonZeroInputs = fieldInputs.filter((fr: Fr) => !fr.isZero());
-    
+    const fieldInputs: Fr[] = inputArray.map((input: string) => new Fr(hexToBigInt(input)))
     
     // Perform Poseidon2 hash using bb.js
     let result: Fr;
-    if (nonZeroInputs.length === 0) {
+    if (fieldInputs.length === 0) {
       // Empty input case
       result = await bb.poseidon2Hash([]);
     } else {
-      result = await bb.poseidon2Hash(nonZeroInputs);
+      result = await bb.poseidon2Hash(fieldInputs);
     }
     
     
