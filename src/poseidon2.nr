@@ -16,6 +16,11 @@ impl Poseidon2 {
         Poseidon2::hash_internal(input, message_size, message_size != N)
     }
 
+    #[no_predicates]
+    pub fn hash_fixed<let N: u32>(input: [Field; N], message_size: u32) -> Field {
+        Poseidon2::hash_internal(input, message_size, false)
+    }
+
     pub(crate) fn new(iv: Field) -> Poseidon2 {
         let mut result =
             Poseidon2 { cache: [0; 3], state: [0; 4], cache_size: 0, squeeze_mode: false };
