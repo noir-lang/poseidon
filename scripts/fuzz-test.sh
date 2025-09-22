@@ -3,6 +3,10 @@ set -eu
 
 export RPC_PORT=5555
 
+# Build TypeScript first
+echo "Building TypeScript..."
+yarn build
+
 # Start TypeScript RPC server in background
 echo "Starting TypeScript RPC server..."
 yarn start &
