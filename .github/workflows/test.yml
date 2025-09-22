@@ -85,7 +85,8 @@ jobs:
           cache-on-failure: true
 
       - name: Export and Test Noir Functions
-        run: ./scripts/fuzz-test.sh
+        working-directory: ./scripts
+        run: ./fuzz-test.sh
 
   format:
     runs-on: ubuntu-latest
