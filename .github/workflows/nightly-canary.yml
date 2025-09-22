@@ -36,9 +36,8 @@ jobs:
           yarn --immutable
             
       - name: Run all tests (including oracle tests)
-        run: |
-          cd scripts
-          ./fuzz-test.sh
+        working-directory: ./scripts
+        run: ./fuzz-test.sh
 
       - name: Alert on dead links
         uses: JasonEtco/create-an-issue@v2

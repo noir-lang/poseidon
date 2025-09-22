@@ -59,9 +59,8 @@ jobs:
           yarn --immutable
             
       - name: Run all tests (including oracle tests)
-        run: |
-          cd scripts
-          ./fuzz-test.sh
+        working-directory: ./scripts
+        run: ./fuzz-test.sh
 
   rust-equivalence-tests:
     name: Test for equivalence against Rust impl
