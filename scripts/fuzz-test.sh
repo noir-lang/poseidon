@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -eu
 
-export RPC_PORT=5555
+export RPC_PORT=8095
 
 # Build TypeScript first
 echo "Building TypeScript..."
