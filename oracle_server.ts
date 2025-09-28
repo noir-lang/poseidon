@@ -155,7 +155,7 @@ app.get("/health", (_req: Request, res: Response<HealthResponse>) => {
 });
 
 // Start server
-const PORT = process.env['PORT'] || 5555;
+const PORT = process.env['PORT'] || 8095;
 app.listen(PORT, () => {
   // Server started silently
 });
