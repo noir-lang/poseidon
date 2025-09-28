@@ -60,7 +60,7 @@ jobs:
             
       - name: Run all tests (including oracle tests)
         working-directory: ./scripts
-        run: ./fuzz-test.sh
+        run: ./run.sh
   rust-equivalence-tests:
     name: Test for equivalence against Rust impl
     runs-on: ubuntu-latest
@@ -97,7 +97,7 @@ jobs:
 
       - name: Export and Test Noir Functions
         working-directory: ./scripts
-        run: ./fuzz-test.sh
+        run: ./run.sh
 
   format:
     runs-on: ubuntu-latest

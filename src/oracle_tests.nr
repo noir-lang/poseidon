@@ -16,5 +16,5 @@ unconstrained fn test_poseidon2(input: [Field; 10]) {
     // get hash from bb.js via oracle
     let bb_hash = get_poseidon2_hash(input);
 
-    assert_eq(noir_hash, bb_hash)
+    assert_eq(noir_hash, bb_hash);
 }
