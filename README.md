@@ -26,3 +26,27 @@ In your _Nargo.toml_ file, add the version of this library you would like to ins
 [dependencies]
 poseidon = { tag = "v0.1.1", git = "https://github.com/noir-lang/poseidon" }
 ```
+
+## Usage
+
+You can import and use this library by doing:
+
+```rust
+use poseidon::poseidon2;
+
+fn main(input: Field, expected: pub Field) {
+    let reconstructed = poseidon2::Poseidon2::hash([input], 1);
+    assert(expected == reconstructed);
+}
+
+#[test]
+fn test_main() {
+    let expected = 0x168758332d5b3e2d13be8048c8011b454590e06c44bce7f702f09103eef5a373; // poisedon2(1)
+
+    main(1, expected);
+
+    // Uncomment to make test fail
+    // main(1, 0x2);
+}
+
+```
