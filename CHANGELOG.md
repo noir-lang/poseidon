@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.2.0](https://github.com/noir-lang/poseidon/compare/v0.1.1...v0.2.0) (2025-12-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* remove variable length hash padding ([#15](https://github.com/noir-lang/poseidon/issues/15))
+
+### Features
+
+* Remove variable length hash padding ([#15](https://github.com/noir-lang/poseidon/issues/15)) ([af9b726](https://github.com/noir-lang/poseidon/commit/af9b72632b8fa3129140c2cda578d04cc991e28b))
+
 ## [0.1.1](https://github.com/noir-lang/poseidon/compare/v0.1.0...v0.1.1) (2025-05-22)
 
 
