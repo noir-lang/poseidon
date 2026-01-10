@@ -32,3 +32,95 @@ fn reference_impl_test_vectors() {
         );
     }
 }
+
+#[test]
+fn test_poseidon_hash_1() {
+    // Test hash_1 function
+    let input = [42];
+    let hash = poseidon::bn254::hash_1(input);
+    let expected = 0x1b408dafebeddf0871388399b1e53bd065fd70f18580be5cdde15d7eb2c52743;
+    assert_eq(hash, expected);
+}
+
+#[test]
+fn test_poseidon_hash_2() {
+    let input = [1, 2];
+    let hash = poseidon::bn254::hash_2(input);
+
+    // Deterministic
+    assert_eq(hash, poseidon::bn254::hash_2(input));
+
+    // Order matters
+    let reversed = poseidon::bn254::hash_2([2, 1]);
+    assert(hash != reversed);
+}
+
+#[test]
+fn test_poseidon_hash_4() {
+    let input = [1, 2, 3, 4];
+    let hash = poseidon::bn254::hash_4(input);
+
+    // Deterministic
+    assert_eq(hash, poseidon::bn254::hash_4(input));
+
+    // Different input
+    let different = poseidon::bn254::hash_4([1, 2, 3, 5]);
+    assert(hash != different);
+}
+
+#[test]
+fn test_poseidon_hash_8() {
+    let input = [1, 2, 3, 4, 5, 6, 7, 8];
+    let hash = poseidon::bn254::hash_8(input);
+
+    // Deterministic
+    assert_eq(hash, poseidon::bn254::hash_8(input));
+}
+
+#[test]
+fn test_poseidon_sponge() {
+    // Test variable-length sponge
+    let input = [1, 2, 3, 4, 5];
+    let hash = poseidon::bn254::sponge(input);
+
+    // Deterministic
+    assert_eq(hash, poseidon::bn254::sponge(input));
+
+    // Different length input
+    let shorter = poseidon::bn254::sponge([1, 2, 3]);
+    assert(hash != shorter);
+}
+
+#[test]
+fn test_poseidon_sponge_long_input() {
+    // Test sponge with input longer than rate (rate=4 for x5_5)
+    let input = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    let hash = poseidon::bn254::sponge(input);
+
+    // Deterministic
+    assert_eq(hash, poseidon::bn254::sponge(input));
+}
+
+#[test]
+fn test_poseidon_zero_input() {
+    // Test with zero values
+    let zeros = [0, 0, 0];
+    let hash = poseidon::bn254::hash_3(zeros);
+
+    // Should be deterministic
+    assert_eq(hash, poseidon::bn254::hash_3(zeros));
+
+    // Should differ from non-zero input
+    let non_zeros = poseidon::bn254::hash_3([0, 0, 1]);
+    assert(hash != non_zeros);
+}
+
+#[test]
+fn test_poseidon_large_values() {
+    // Test with large field values (but within field modulus)
+    let large = [12345678901234567890, 98765432109876543210];
+    let hash = poseidon::bn254::hash_2(large);
+
+    // Should not panic and should be deterministic
+    assert_eq(hash, poseidon::bn254::hash_2(large));
+}

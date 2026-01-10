@@ -11,7 +11,7 @@ yarn build
 echo "Starting TypeScript RPC server..."
 yarn start &
 TS_SERVER_PID=$!
-trap 'kill $TS_SERVER_PID' EXIT
+trap 'kill $TS_SERVER_PID 2>/dev/null || true' EXIT
 
 # Wait for server to start
 sleep 2
