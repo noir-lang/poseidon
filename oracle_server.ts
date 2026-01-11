@@ -129,11 +129,9 @@ async function handlePoseidon2Hash(inputs: string[][]): Promise<ForeignCallResul
     // inputs[1] = array contents
     // inputs[2] = message_size
 
-    // Extract the input array from the second parameter (inputs[1])
     const inputArray = inputs[1] || [];
 
-    // Extract message_size from the third parameter (inputs[2])
-    // For scalar values (u32), Noir sends them as strings, not arrays
+    // For u32, Noir sends as strings, not arrays
     const messageSizeHex = inputs[2] as unknown as string;
     if (!messageSizeHex) {
       throw new Error("message_size parameter is missing");
@@ -146,7 +144,7 @@ async function handlePoseidon2Hash(inputs: string[][]): Promise<ForeignCallResul
     // Slice to only use the first message_size elements
     const slicedInputs = fieldInputs.slice(0, messageSize);
 
-    // Perform Poseidon2 hash using bb.js
+    // Get Poseidon2 hash using bb.js
     const result = bb.poseidon2Hash(slicedInputs);
 
     return {
