@@ -158,10 +158,6 @@ async function handlePoseidon2Hash(inputs: string[][]): Promise<ForeignCallResul
 
 async function handlePoseidonHash(inputs: string[][]): Promise<ForeignCallResult> {
   try {
-    // For dynamic slices [Field], Noir sends:
-    // inputs[0] = array length (metadata)
-    // inputs[1] = array contents
-    // inputs[2] = message_size
 
     // Extract the input array from the second parameter (inputs[1])
     const inputArray = inputs[1] || [];
