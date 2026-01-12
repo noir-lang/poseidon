@@ -16,15 +16,11 @@ jobs:
 
       - name: Install Nargo
         uses: noir-lang/noirup@v0.1.4
-        uses: noir-lang/noirup@v0.1.4
         with:
-          toolchain: 1.0.0-beta.17
           toolchain: 1.0.0-beta.17
 
       - name: Install bb
         run: |
-          curl -L https://raw.githubusercontent.com/AztecProtocol/aztec-packages/refs/heads/next/barretenberg/bbup/install | bash
-          ~/.bb/bbup -nv 1.0.0-beta.17
           curl -L https://raw.githubusercontent.com/AztecProtocol/aztec-packages/refs/heads/next/barretenberg/bbup/install | bash
           ~/.bb/bbup -nv 1.0.0-beta.17
 
@@ -33,6 +29,9 @@ jobs:
       
       - name: Generate gate report
         run: ./scripts/build-gates-report.sh
+        env:
+            BACKEND: /home/runner/.bb/bb
+
 
       - name: Store ACIR opcode benchmark result
         uses: benchmark-action/github-action-benchmark@v1
