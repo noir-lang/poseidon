@@ -1,0 +1,8 @@
+{"programs": [
+{"package_name": "poseidon2_length_10.json", "functions": [{
+  "acir_opcodes": 26,
+  "circuit_size": 584,
+  "name": "main"
+}]
+}
+]}
