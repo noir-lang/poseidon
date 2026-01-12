@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1768214659866,
+  "lastUpdate": 1768214661202,
   "repoUrl": "https://github.com/noir-lang/poseidon",
   "entries": {
     "ACIR Opcodes": [
@@ -720,6 +720,105 @@ window.BENCHMARK_DATA = {
           "url": "https://github.com/noir-lang/poseidon/commit/8f5444bb77aab4e43f95058fcf69686e5b5c8598"
         },
         "date": 1768214376026,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "poseidon2_hash_1",
+            "value": 166,
+            "unit": "opcodes"
+          },
+          {
+            "name": "poseidon2_hash_10",
+            "value": 276,
+            "unit": "opcodes"
+          },
+          {
+            "name": "poseidon2_hash_2",
+            "value": 330,
+            "unit": "opcodes"
+          },
+          {
+            "name": "poseidon2_hash_20",
+            "value": 276,
+            "unit": "opcodes"
+          },
+          {
+            "name": "poseidon2_hash_4",
+            "value": 276,
+            "unit": "opcodes"
+          },
+          {
+            "name": "poseidon2_hash_8",
+            "value": 276,
+            "unit": "opcodes"
+          },
+          {
+            "name": "poseidon_hash_1",
+            "value": 1510,
+            "unit": "opcodes"
+          },
+          {
+            "name": "poseidon_hash_2",
+            "value": 1996,
+            "unit": "opcodes"
+          },
+          {
+            "name": "poseidon_hash_4",
+            "value": 2967,
+            "unit": "opcodes"
+          },
+          {
+            "name": "poseidon_hash_8",
+            "value": 5070,
+            "unit": "opcodes"
+          },
+          {
+            "name": "poseidon_sponge_1",
+            "value": 2960,
+            "unit": "opcodes"
+          },
+          {
+            "name": "poseidon_sponge_16",
+            "value": 3671,
+            "unit": "opcodes"
+          },
+          {
+            "name": "poseidon_sponge_32",
+            "value": 3670,
+            "unit": "opcodes"
+          },
+          {
+            "name": "poseidon_sponge_4",
+            "value": 3670,
+            "unit": "opcodes"
+          },
+          {
+            "name": "poseidon_sponge_8",
+            "value": 3671,
+            "unit": "opcodes"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "15848336+TomAFrench@users.noreply.github.com",
+            "name": "Tom French",
+            "username": "TomAFrench"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "e7f076addcf2a1559dcdffc20c5fa231009d55df",
+          "message": "chore: fix testing workflow (#26)",
+          "timestamp": "2026-01-12T10:44:05Z",
+          "tree_id": "4992f2427f091b696184b29a591a2995181bd469",
+          "url": "https://github.com/noir-lang/poseidon/commit/e7f076addcf2a1559dcdffc20c5fa231009d55df"
+        },
+        "date": 1768214661182,
         "tool": "customSmallerIsBetter",
         "benches": [
           {
