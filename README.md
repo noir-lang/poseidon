@@ -4,7 +4,7 @@ This package contains the Poseidon hashing interface, formerly in the Noir stand
 
 ## Noir version compatibility
 
-This library is tested to work as of Noir version 0.36.0.
+This library is tested to work as of Noir version 1.0.0.
 
 ## Benchmarks
 

@@ -2,13 +2,13 @@ name: Noir tests
 
 on:
   push:
-   branches:
-    - master
+    branches:
+      - master
   pull_request:
 
 env:
   CARGO_TERM_COLOR: always
-  MINIMUM_NOIR_VERSION: v0.36.0
+  MINIMUM_NOIR_VERSION: 1.0.0-beta.17
 
 jobs:
   noir-version-list:
@@ -51,51 +51,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22.15.0
-          cache: 'yarn'
-          cache-dependency-path: 'yarn.lock'
-    
+          cache: "yarn"
+          cache-dependency-path: "yarn.lock"
+
       - name: Install dependencies
         run: |
           yarn --immutable
-            
+
       - name: Run all tests (including oracle tests)
-        working-directory: ./scripts
-        run: ./run.sh
-  rust-equivalence-tests:
-    name: Test for equivalence against Rust impl
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout sources
-        uses: actions/checkout@v4
-
-      - name: Install Nargo
-        uses: noir-lang/noirup@v0.1.4
-        with:
-          toolchain: v0.36.0
-
-      - name: Install Cargo
-        uses: dtolnay/rust-toolchain@1.74.1
-        with:
-          targets: x86_64-unknown-linux-gnu
-      
-      - name: Cache Cargo dependencies
-        uses: Swatinem/rust-cache@v2
-        with:
-          key: x86_64-unknown-linux-gnu
-          cache-on-failure: true
-      
-      - name: Setup Node.js and install dependencies
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22.15.0
-          cache: 'yarn'
-          cache-dependency-path: 'yarn.lock'
-      
-      - name: Install dependencies
-        run: |
-          yarn --immutable
-
-      - name: Export and Test Noir Functions
         working-directory: ./scripts
         run: ./run.sh
 
@@ -120,9 +83,8 @@ jobs:
     runs-on: ubuntu-latest
     # We want this job to always run (even if the dependant jobs fail) as we want this job to fail rather than skipping.
     if: ${{ always() }}
-    needs: 
+    needs:
       - test
-      - rust-equivalence-tests
       - format
 
     steps:
