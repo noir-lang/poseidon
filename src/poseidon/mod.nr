@@ -46,9 +46,7 @@ pub fn config<let T: u32, let N: u32, let X: u32>(
     PoseidonConfig { t, rf, rp, alpha, round_constants, mds, presparse_mds, sparse_mds }
 }
 
-// Internal helper that performs all permutation rounds except the final matrix application
-// This is shared by both permute() and permute_first_element()
-fn permute_internal<let T: u32, let N: u32, let X: u32>(
+pub fn permute<let T: u32, let N: u32, let X: u32>(
     pos_conf: PoseidonConfig<T, N, X>,
     mut state: [Field; T],
 ) -> [Field; T] {
@@ -111,23 +109,6 @@ fn permute_internal<let T: u32, let N: u32, let X: u32>(
     state
 }
 
-pub fn permute<let T: u32, let N: u32, let X: u32>(
-    pos_conf: PoseidonConfig<T, N, X>,
-    state: [Field; T],
-) -> [Field; T] {
-    let state = permute_internal(pos_conf, state);
-    apply_matrix(pos_conf.mds, state)
-}
-
-// Optimized permute that only returns the first state element
-pub fn permute_first_element<let T: u32, let N: u32, let X: u32>(
-    pos_conf: PoseidonConfig<T, N, X>,
-    state: [Field; T],
-) -> Field {
-    let state = permute_internal(pos_conf, state);
-    apply_matrix_first_row(pos_conf.mds, state)
-}
-
 // Performs matrix multiplication on a vector
 fn apply_matrix<let N: u32>(matrix: [[Field; N]; N], vec: [Field; N]) -> [Field; N] {
     let mut out = [0; N];
@@ -139,15 +120,6 @@ fn apply_matrix<let N: u32>(matrix: [[Field; N]; N], vec: [Field; N]) -> [Field;
     }
 
     out
-}
-
-// Used when we only need state[0]
-fn apply_matrix_first_row<let N: u32>(matrix: [[Field; N]; N], vec: [Field; N]) -> Field {
-    let mut result = 0;
-    for j in 0..N {
-        result += vec[j] * matrix[j][0];
-    }
-    result
 }
 
 // Corresponding absorption.
