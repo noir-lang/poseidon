@@ -10,164 +10,96 @@ pub fn sponge<let N: u32>(msg: [Field; N]) -> Field {
     absorb(consts::x5_5_config(), [0; 5], 4, 1, msg)[1]
 }
 
+// Creates state array with input at positions [1..N+1], then applies permutation
+fn hash_internal<let N: u32, let STATE_SIZE: u32>(
+    input: [Field; N],
+    perm_fn: fn([Field; STATE_SIZE]) -> Field,
+) -> Field {
+    let mut state = [0; STATE_SIZE];
+    for i in 0..N {
+        state[i + 1] = input[i];
+    }
+    perm_fn(state)
+}
+
 // Various instances of the Poseidon hash function
 // Consistent with Circom's implementation
 #[no_predicates]
 pub fn hash_1(input: [Field; 1]) -> Field {
-    let mut state = [0; 2];
-    for i in 0..input.len() {
-        state[i + 1] = input[i];
-    }
-
-    perm::x5_2_first(state)
+    hash_internal(input, perm::x5_2_first)
 }
 
 #[no_predicates]
 pub fn hash_2(input: [Field; 2]) -> Field {
-    let mut state = [0; 3];
-    for i in 0..input.len() {
-        state[i + 1] = input[i];
-    }
-
-    perm::x5_3_first(state)
+    hash_internal(input, perm::x5_3_first)
 }
 
 #[no_predicates]
 pub fn hash_3(input: [Field; 3]) -> Field {
-    let mut state = [0; 4];
-    for i in 0..input.len() {
-        state[i + 1] = input[i];
-    }
-
-    perm::x5_4_first(state)
+    hash_internal(input, perm::x5_4_first)
 }
 
 #[no_predicates]
 pub fn hash_4(input: [Field; 4]) -> Field {
-    let mut state = [0; 5];
-    for i in 0..input.len() {
-        state[i + 1] = input[i];
-    }
-
-    perm::x5_5_first(state)
+    hash_internal(input, perm::x5_5_first)
 }
 
 #[no_predicates]
 pub fn hash_5(input: [Field; 5]) -> Field {
-    let mut state = [0; 6];
-    for i in 0..input.len() {
-        state[i + 1] = input[i];
-    }
-
-    perm::x5_6_first(state)
+    hash_internal(input, perm::x5_6_first)
 }
 
 #[no_predicates]
 pub fn hash_6(input: [Field; 6]) -> Field {
-    let mut state = [0; 7];
-    for i in 0..input.len() {
-        state[i + 1] = input[i];
-    }
-
-    perm::x5_7_first(state)
+    hash_internal(input, perm::x5_7_first)
 }
 
 #[no_predicates]
 pub fn hash_7(input: [Field; 7]) -> Field {
-    let mut state = [0; 8];
-    for i in 0..input.len() {
-        state[i + 1] = input[i];
-    }
-
-    perm::x5_8_first(state)
+    hash_internal(input, perm::x5_8_first)
 }
 
 #[no_predicates]
 pub fn hash_8(input: [Field; 8]) -> Field {
-    let mut state = [0; 9];
-    for i in 0..input.len() {
-        state[i + 1] = input[i];
-    }
-
-    perm::x5_9_first(state)
+    hash_internal(input, perm::x5_9_first)
 }
 
 #[no_predicates]
 pub fn hash_9(input: [Field; 9]) -> Field {
-    let mut state = [0; 10];
-    for i in 0..input.len() {
-        state[i + 1] = input[i];
-    }
-
-    perm::x5_10_first(state)
+    hash_internal(input, perm::x5_10_first)
 }
 
 #[no_predicates]
 pub fn hash_10(input: [Field; 10]) -> Field {
-    let mut state = [0; 11];
-    for i in 0..input.len() {
-        state[i + 1] = input[i];
-    }
-
-    perm::x5_11_first(state)
+    hash_internal(input, perm::x5_11_first)
 }
 
 #[no_predicates]
 pub fn hash_11(input: [Field; 11]) -> Field {
-    let mut state = [0; 12];
-    for i in 0..input.len() {
-        state[i + 1] = input[i];
-    }
-
-    perm::x5_12_first(state)
+    hash_internal(input, perm::x5_12_first)
 }
 
 #[no_predicates]
 pub fn hash_12(input: [Field; 12]) -> Field {
-    let mut state = [0; 13];
-    for i in 0..input.len() {
-        state[i + 1] = input[i];
-    }
-
-    perm::x5_13_first(state)
+    hash_internal(input, perm::x5_13_first)
 }
 
 #[no_predicates]
 pub fn hash_13(input: [Field; 13]) -> Field {
-    let mut state = [0; 14];
-    for i in 0..input.len() {
-        state[i + 1] = input[i];
-    }
-
-    perm::x5_14_first(state)
+    hash_internal(input, perm::x5_14_first)
 }
 
 #[no_predicates]
 pub fn hash_14(input: [Field; 14]) -> Field {
-    let mut state = [0; 15];
-    for i in 0..input.len() {
-        state[i + 1] = input[i];
-    }
-
-    perm::x5_15_first(state)
+    hash_internal(input, perm::x5_15_first)
 }
 
 #[no_predicates]
 pub fn hash_15(input: [Field; 15]) -> Field {
-    let mut state = [0; 16];
-    for i in 0..input.len() {
-        state[i + 1] = input[i];
-    }
-
-    perm::x5_16_first(state)
+    hash_internal(input, perm::x5_16_first)
 }
 
 #[no_predicates]
 pub fn hash_16(input: [Field; 16]) -> Field {
-    let mut state = [0; 17];
-    for i in 0..input.len() {
-        state[i + 1] = input[i];
-    }
-
-    perm::x5_17_first(state)
+    hash_internal(input, perm::x5_17_first)
 }
