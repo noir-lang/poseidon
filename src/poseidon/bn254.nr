@@ -19,7 +19,7 @@ pub fn hash_1(input: [Field; 1]) -> Field {
         state[i + 1] = input[i];
     }
 
-    perm::x5_2(state)[0]
+    perm::x5_2_first(state)
 }
 
 #[no_predicates]
@@ -29,7 +29,7 @@ pub fn hash_2(input: [Field; 2]) -> Field {
         state[i + 1] = input[i];
     }
 
-    perm::x5_3(state)[0]
+    perm::x5_3_first(state)
 }
 
 #[no_predicates]
@@ -39,7 +39,7 @@ pub fn hash_3(input: [Field; 3]) -> Field {
         state[i + 1] = input[i];
     }
 
-    perm::x5_4(state)[0]
+    perm::x5_4_first(state)
 }
 
 #[no_predicates]
@@ -49,7 +49,7 @@ pub fn hash_4(input: [Field; 4]) -> Field {
         state[i + 1] = input[i];
     }
 
-    perm::x5_5(state)[0]
+    perm::x5_5_first(state)
 }
 
 #[no_predicates]
@@ -59,7 +59,7 @@ pub fn hash_5(input: [Field; 5]) -> Field {
         state[i + 1] = input[i];
     }
 
-    perm::x5_6(state)[0]
+    perm::x5_6_first(state)
 }
 
 #[no_predicates]
@@ -69,7 +69,7 @@ pub fn hash_6(input: [Field; 6]) -> Field {
         state[i + 1] = input[i];
     }
 
-    perm::x5_7(state)[0]
+    perm::x5_7_first(state)
 }
 
 #[no_predicates]
@@ -79,7 +79,7 @@ pub fn hash_7(input: [Field; 7]) -> Field {
         state[i + 1] = input[i];
     }
 
-    perm::x5_8(state)[0]
+    perm::x5_8_first(state)
 }
 
 #[no_predicates]
@@ -89,7 +89,7 @@ pub fn hash_8(input: [Field; 8]) -> Field {
         state[i + 1] = input[i];
     }
 
-    perm::x5_9(state)[0]
+    perm::x5_9_first(state)
 }
 
 #[no_predicates]
@@ -99,7 +99,7 @@ pub fn hash_9(input: [Field; 9]) -> Field {
         state[i + 1] = input[i];
     }
 
-    perm::x5_10(state)[0]
+    perm::x5_10_first(state)
 }
 
 #[no_predicates]
@@ -109,7 +109,7 @@ pub fn hash_10(input: [Field; 10]) -> Field {
         state[i + 1] = input[i];
     }
 
-    perm::x5_11(state)[0]
+    perm::x5_11_first(state)
 }
 
 #[no_predicates]
@@ -119,7 +119,7 @@ pub fn hash_11(input: [Field; 11]) -> Field {
         state[i + 1] = input[i];
     }
 
-    perm::x5_12(state)[0]
+    perm::x5_12_first(state)
 }
 
 #[no_predicates]
@@ -129,7 +129,7 @@ pub fn hash_12(input: [Field; 12]) -> Field {
         state[i + 1] = input[i];
     }
 
-    perm::x5_13(state)[0]
+    perm::x5_13_first(state)
 }
 
 #[no_predicates]
@@ -139,7 +139,7 @@ pub fn hash_13(input: [Field; 13]) -> Field {
         state[i + 1] = input[i];
     }
 
-    perm::x5_14(state)[0]
+    perm::x5_14_first(state)
 }
 
 #[no_predicates]
@@ -149,7 +149,7 @@ pub fn hash_14(input: [Field; 14]) -> Field {
         state[i + 1] = input[i];
     }
 
-    perm::x5_15(state)[0]
+    perm::x5_15_first(state)
 }
 
 #[no_predicates]
@@ -159,7 +159,7 @@ pub fn hash_15(input: [Field; 15]) -> Field {
         state[i + 1] = input[i];
     }
 
-    perm::x5_16(state)[0]
+    perm::x5_16_first(state)
 }
 
 #[no_predicates]
@@ -169,5 +169,5 @@ pub fn hash_16(input: [Field; 16]) -> Field {
         state[i + 1] = input[i];
     }
 
-    perm::x5_17(state)[0]
+    perm::x5_17_first(state)
 }
