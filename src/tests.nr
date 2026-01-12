@@ -32,3 +32,36 @@ fn reference_impl_test_vectors() {
         );
     }
 }
+
+#[test]
+fn test_poseidon_hash_1() {
+    // Test hash_1 function
+    let input = [42];
+    let hash = poseidon::bn254::hash_1(input);
+    let expected = 0x1b408dafebeddf0871388399b1e53bd065fd70f18580be5cdde15d7eb2c52743;
+    assert_eq(hash, expected);
+}
+
+#[test]
+fn test_poseidon_hash_2() {
+    let input = [1, 2];
+    let hash = poseidon::bn254::hash_2(input);
+    let expected = 0x115cc0f5e7d690413df64c6b9662e9cf2a3617f2743245519e19607a4417189a;
+    assert_eq(hash, expected);
+}
+
+#[test]
+fn test_poseidon_hash_4() {
+    let input = [1, 2, 3, 4];
+    let hash = poseidon::bn254::hash_4(input);
+    let expected = 0x299c867db6c1fdd79dcefa40e4510b9837e60ebb1ce0663dbaa525df65250465;
+    assert_eq(hash, expected);
+}
+
+#[test]
+fn test_poseidon_hash_8() {
+    let input = [1, 2, 3, 4, 5, 6, 7, 8];
+    let hash = poseidon::bn254::hash_8(input);
+    let expected = 0x2921ab9bd0140cbc98e40395c0fefb40337a4d54fbbecd9a4d43b3d8d0c4d8d1;
+    assert_eq(hash, expected);
+}

@@ -54,7 +54,6 @@ fn permute_internal<let T: u32, let N: u32, let X: u32>(
 ) -> [Field; T] {
     let PoseidonConfig { t, rf, rp, alpha, round_constants, mds, presparse_mds, sparse_mds } =
         pos_conf;
-
     for i in 0..state.len() {
         state[i] += round_constants[i];
     }
