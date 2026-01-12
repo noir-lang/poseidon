@@ -105,6 +105,7 @@ pub fn permute<let T: u32, let N: u32, let X: u32>(
     }
 
     state = sigma(state);
+    state = apply_matrix(mds, state);
     state
 }
 
