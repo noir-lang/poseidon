@@ -10,6 +10,12 @@ jobs:
   test:
     name: Benchmark library
     runs-on: ubuntu-latest
+    permissions:
+      # deployments permission to deploy GitHub pages website
+      deployments: write
+      # contents permission to update benchmark contents in gh-pages branch
+      contents: write
+    
     steps:
       - name: Checkout sources
         uses: actions/checkout@v4
