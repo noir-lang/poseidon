@@ -115,10 +115,7 @@ pub fn x5_17(mut state: [Field; 17]) -> [Field; 17] {
     state
 }
 
-// Optimized versions that only return the first state element
 // Used by hash functions which only need state[0]
-// Reduces gate count by ~10-20% compared to full permutation
-
 #[field(bn254)]
 pub fn x5_2_first(state: [Field; 2]) -> Field {
     permute_first_element(consts::x5_2_config(), state)

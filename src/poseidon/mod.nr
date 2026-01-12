@@ -120,8 +120,6 @@ pub fn permute<let T: u32, let N: u32, let X: u32>(
 }
 
 // Optimized permute that only returns the first state element
-// Used by hash functions which only need state[0]
-// Reduces gate count by ~10-20% by skipping unused final round computations
 pub fn permute_first_element<let T: u32, let N: u32, let X: u32>(
     pos_conf: PoseidonConfig<T, N, X>,
     state: [Field; T],
@@ -143,9 +141,7 @@ fn apply_matrix<let N: u32>(matrix: [[Field; N]; N], vec: [Field; N]) -> [Field;
     out
 }
 
-// Optimized version that only computes the first row of matrix multiplication
-// Used when we only need state[0] (e.g., in hash functions)
-// Saves (N-1) * (2N-1) gates by not computing unused elements
+// Used when we only need state[0]
 fn apply_matrix_first_row<let N: u32>(matrix: [[Field; N]; N], vec: [Field; N]) -> Field {
     let mut result = 0;
     for j in 0..N {
