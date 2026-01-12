@@ -46,7 +46,9 @@ pub fn config<let T: u32, let N: u32, let X: u32>(
     PoseidonConfig { t, rf, rp, alpha, round_constants, mds, presparse_mds, sparse_mds }
 }
 
-pub fn permute<let T: u32, let N: u32, let X: u32>(
+// Internal helper that performs all permutation rounds except the final matrix application
+// This is shared by both permute() and permute_first_element()
+fn permute_internal<let T: u32, let N: u32, let X: u32>(
     pos_conf: PoseidonConfig<T, N, X>,
     mut state: [Field; T],
 ) -> [Field; T] {
@@ -106,9 +108,15 @@ pub fn permute<let T: u32, let N: u32, let X: u32>(
     }
 
     state = sigma(state);
-    state = apply_matrix(mds, state);
-
     state
+}
+
+pub fn permute<let T: u32, let N: u32, let X: u32>(
+    pos_conf: PoseidonConfig<T, N, X>,
+    state: [Field; T],
+) -> [Field; T] {
+    let state = permute_internal(pos_conf, state);
+    apply_matrix(pos_conf.mds, state)
 }
 
 // Optimized permute that only returns the first state element
@@ -116,66 +124,10 @@ pub fn permute<let T: u32, let N: u32, let X: u32>(
 // Reduces gate count by ~10-20% by skipping unused final round computations
 pub fn permute_first_element<let T: u32, let N: u32, let X: u32>(
     pos_conf: PoseidonConfig<T, N, X>,
-    mut state: [Field; T],
+    state: [Field; T],
 ) -> Field {
-    let PoseidonConfig { t, rf, rp, alpha, round_constants, mds, presparse_mds, sparse_mds } =
-        pos_conf;
-
-    for i in 0..state.len() {
-        state[i] += round_constants[i];
-    }
-
-    for _r in 0..rf / 2 - 1 {
-        state = sigma(state);
-        for i in 0..T {
-            state[i] += round_constants[T * (_r + 1) as u32 + i];
-        }
-        state = apply_matrix(mds, state);
-    }
-
-    state = sigma(state);
-    for i in 0..T {
-        state[i] += round_constants[T * (rf / 2) as u32 + i];
-    }
-    state = apply_matrix(presparse_mds, state);
-
-    for i in 0..T {
-        std::as_witness(state[i]);
-    }
-
-    for _r in 0..rp {
-        state[0] = state[0].pow_32(alpha);
-        state[0] += round_constants[(rf / 2 + 1) as u32 * T + _r as u32];
-        std::as_witness(state[0]);
-        {
-            let mut newState0 = 0;
-            for j in 0..T {
-                newState0 += sparse_mds[(T * 2 - 1) * _r as u32 + j as u32] * state[j];
-            }
-            for k in 1..T {
-                state[k] += state[0] * sparse_mds[(t * 2 - 1) as u32 * _r as u32 + T + k - 1];
-            }
-            state[0] = newState0;
-
-            if (_r & 1 == 0) {
-                for k in 1..T {
-                    std::as_witness(state[k]);
-                }
-            }
-        }
-    }
-
-    for _r in 0..rf / 2 - 1 {
-        state = sigma(state);
-        for i in 0..state.len() {
-            state[i] += round_constants[(rf / 2 + 1) as u32 * T + rp as u32 + (_r as u32) * T + i];
-        }
-        state = apply_matrix(mds, state);
-    }
-
-    // Final round: only compute first element since that's all we need
-    state = sigma(state);
-    apply_matrix_first_row(mds, state)
+    let state = permute_internal(pos_conf, state);
+    apply_matrix_first_row(pos_conf.mds, state)
 }
 
 // Performs matrix multiplication on a vector
