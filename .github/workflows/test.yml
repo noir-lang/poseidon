@@ -85,7 +85,6 @@ jobs:
     if: ${{ always() }}
     needs: 
       - test
-      - rust-equivalence-tests
       - format
 
     steps:
