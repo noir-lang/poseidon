@@ -15,6 +15,7 @@ jobs:
       deployments: write
       # contents permission to update benchmark contents in gh-pages branch
       contents: write
+      pull-requests: write
     
     steps:
       - name: Checkout sources

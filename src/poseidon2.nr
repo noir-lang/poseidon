@@ -25,11 +25,22 @@ impl Poseidon2 {
 
     fn perform_duplex(&mut self) {
         // add the cache into sponge state
-        for i in 0..RATE {
-            // We effectively zero-pad the cache by only adding to the state
-            // cache that is less than the specified `cache_size`
-            if i < self.cache_size {
+        if std::runtime::is_unconstrained() {
+            let count = if self.cache_size < RATE {
+                self.cache_size
+            } else {
+                RATE
+            };
+            for i in 0..count {
                 self.state[i] += self.cache[i];
+            }
+        } else {
+            for i in 0..RATE {
+                // We effectively zero-pad the cache by only adding to the state
+                // cache that is less than the specified `cache_size`
+                if i < self.cache_size {
+                    self.state[i] += self.cache[i];
+                }
             }
         }
         self.state = crate::poseidon2_permutation(self.state, 4);
@@ -63,9 +74,15 @@ impl Poseidon2 {
         let two_pow_64 = 18446744073709551616;
         let iv: Field = (in_len as Field) * two_pow_64;
         let mut sponge = Poseidon2::new(iv);
-        for i in 0..input.len() {
-            if i < in_len {
+        if std::runtime::is_unconstrained() {
+            for i in 0..in_len {
                 sponge.absorb(input[i]);
+            }
+        } else {
+            for i in 0..input.len() {
+                if i < in_len {
+                    sponge.absorb(input[i]);
+                }
             }
         }
         sponge.squeeze()
