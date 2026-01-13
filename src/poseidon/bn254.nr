@@ -3,7 +3,6 @@ pub mod perm;
 pub mod consts;
 
 use crate::poseidon::absorb;
-use super::permute;
 
 // Variable-length Poseidon-128 sponge as suggested in second bullet point of section 3 of https://eprint.iacr.org/2019/458.pdf
 #[field(bn254)]
