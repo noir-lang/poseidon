@@ -25,13 +25,10 @@ impl Poseidon2 {
 
     fn perform_duplex(&mut self) {
         // add the cache into sponge state
-        for i in 0..RATE {
-            // We effectively zero-pad the cache by only adding to the state
-            // cache that is less than the specified `cache_size`
-            if i < self.cache_size {
-                self.state[i] += self.cache[i];
-            }
-        }
+        self.state[0] += self.cache[0] * (0 < self.cache_size) as Field;
+        self.state[1] += self.cache[1] * (1 < self.cache_size) as Field;
+        self.state[2] += self.cache[2] * (2 < self.cache_size) as Field;
+        self.state[3] += self.cache[3] * (3 < self.cache_size) as Field;
         self.state = crate::poseidon2_permutation(self.state, 4);
     }
 
