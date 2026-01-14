@@ -66,11 +66,16 @@ impl Poseidon2 {
         state[RATE] = iv;
 
         if std::runtime::is_unconstrained() {
-            for i in 0..in_len {
-                state[i % RATE] += input[i];
-                if (i + 1) % RATE == 0 {
-                    state = crate::poseidon2_permutation(state, 4);
-                }
+            for i in 0..(in_len / RATE) {
+                state[0] += input[i * RATE];
+                state[1] += input[i * RATE + 1];
+                state[2] += input[i * RATE + 2];
+                state = crate::poseidon2_permutation(state, 4);
+            }
+            // handle remaining (<3) elements
+            let remainder_start = (in_len / RATE) * RATE;
+            for j in remainder_start..in_len {
+                state[j - remainder_start] += input[j];
             }
         } else {
             for i in 0..input.len() {
