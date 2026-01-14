@@ -26,12 +26,7 @@ impl Poseidon2 {
     fn perform_duplex(&mut self) {
         // add the cache into sponge state
         if std::runtime::is_unconstrained() {
-            let count = if self.cache_size < RATE {
-                self.cache_size
-            } else {
-                RATE
-            };
-            for i in 0..count {
+            for i in 0..self.cache_size {
                 self.state[i] += self.cache[i];
             }
         } else {
