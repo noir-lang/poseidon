@@ -85,9 +85,9 @@ impl Poseidon2 {
 
         // Always run final permutation unless we just completed a full chunk
         // still need to permute once if in_len is 0
-        if in_len == 0 | in_len % RATE != 0 {
-            state = crate::poseidon2_permutation(state, 4);
-        }
+        if (in_len == 0) | (in_len % RATE != 0) {
+            state = crate::poseidon2_permutation(state, 4)
+        };
 
         state[0]
     }
