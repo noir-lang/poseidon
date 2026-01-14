@@ -68,10 +68,24 @@ impl Poseidon2 {
     fn hash_internal<let N: u32>(input: [Field; N], in_len: u32) -> Field {
         let two_pow_64 = 18446744073709551616;
         let iv: Field = (in_len as Field) * two_pow_64;
-        let mut sponge = Poseidon2::new(iv);
+        let mut state = [0; 4];
+        state[RATE] = iv;
+
         if std::runtime::is_unconstrained() {
             for i in 0..in_len {
-                sponge.absorb(input[i]);
+                state[i % RATE] += input[i];
+                if (i + 1) % RATE == 0 {
+                    state = crate::poseidon2_permutation(state, 4);
+                }
+            }
+        } else {
+            for i in 0..input.len() {
+                if i < in_len {
+                    state[i % RATE] += input[i];
+                    if (i + 1) % RATE == 0 {
+                        state = crate::poseidon2_permutation(state, 4);
+                    }
+                }
             }
         } else {
             for i in 0..input.len() {
@@ -80,7 +94,14 @@ impl Poseidon2 {
                 }
             }
         }
-        sponge.squeeze()
+
+        // Always run final permutation unless we just completed a full chunk
+        // still need to permute once if in_len is 0
+        if (in_len == 0) | (in_len % RATE != 0) {
+            state = crate::poseidon2_permutation(state, 4)
+        };
+
+        state[0]
     }
 }
 
