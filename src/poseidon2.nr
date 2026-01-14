@@ -87,12 +87,6 @@ impl Poseidon2 {
                     }
                 }
             }
-        } else {
-            for i in 0..input.len() {
-                if i < in_len {
-                    sponge.absorb(input[i]);
-                }
-            }
         }
 
         // Always run final permutation unless we just completed a full chunk
