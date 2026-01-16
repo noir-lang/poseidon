@@ -96,7 +96,9 @@ impl Poseidon2 {
             let remainder_start = (in_len / RATE) * RATE;
             for j in 0..RATE {
                 let idx = remainder_start + j;
-                state[j] += input[idx] * (idx < in_len) as Field;
+                if idx < in_len {
+                    state[j] += input[idx];
+                }
             }
         }
 
@@ -131,6 +133,6 @@ impl Hasher for Poseidon2Hasher {
 
 impl Default for Poseidon2Hasher {
     fn default() -> Self {
-        Poseidon2Hasher { _state: &[] }
+        Poseidon2Hasher { _state: @[] }
     }
 }
