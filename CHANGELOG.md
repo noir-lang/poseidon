@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.2.1](https://github.com/noir-lang/poseidon/compare/v0.2.0...v0.2.1) (2026-01-16)
+
+
+### Features
+
+* Improve brillig performace ([#27](https://github.com/noir-lang/poseidon/issues/27)) ([596d59a](https://github.com/noir-lang/poseidon/commit/596d59add1222a57ad1e7dd229f7fa529aca6285))
+* Optimize variable length hashes ([#32](https://github.com/noir-lang/poseidon/issues/32)) ([ec4b206](https://github.com/noir-lang/poseidon/commit/ec4b20658f1cf9dd7c7bc16ece935c66dcd21397))
+* Remove cache in static length poseidon2 ([#28](https://github.com/noir-lang/poseidon/issues/28)) ([211d4e9](https://github.com/noir-lang/poseidon/commit/211d4e98fc7c2de6ba1994d97146f81cc358c2ba))
+* Unroll poseidon2 hash loop by RATE chunks ([#30](https://github.com/noir-lang/poseidon/issues/30)) ([678300e](https://github.com/noir-lang/poseidon/commit/678300e3efbd4da9ee93c1be8819a03e9b6c03e5))
+
 ## [0.2.0](https://github.com/noir-lang/poseidon/compare/v0.1.1...v0.2.0) (2025-12-11)
 
 
