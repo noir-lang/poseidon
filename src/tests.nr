@@ -1,4 +1,4 @@
-use super::poseidon;
+use super::{poseidon, poseidon2};
 
 #[test]
 fn reference_impl_test_vectors() {
@@ -63,5 +63,29 @@ fn test_poseidon_hash_8() {
     let input = [1, 2, 3, 4, 5, 6, 7, 8];
     let hash = poseidon::bn254::hash_8(input);
     let expected = 0x2921ab9bd0140cbc98e40395c0fefb40337a4d54fbbecd9a4d43b3d8d0c4d8d1;
+    assert_eq(hash, expected);
+}
+
+#[test]
+fn test_poseidon2_1() {
+    let input = [1000];
+    let hash = poseidon2::Poseidon2::hash(input, input.len());
+    let expected = 0x16433a80e26a23547e25d61dd95fd5793d1ca2dcd78ae64cd146d3b99a35fa7c;
+    assert_eq(hash, expected);
+}
+
+#[test]
+fn test_poseidon2_2() {
+    let input = [1000, 2000];
+    let hash = poseidon2::Poseidon2::hash(input, input.len());
+    let expected = 0x118d5a5ecb25dafe99eb45cb196604a23d0b7c0cbd0c2be29e0787e59b7a1d8a;
+    assert_eq(hash, expected);
+}
+
+#[test]
+fn test_poseidon2_3() {
+    let input = [1000, 2000, 3000];
+    let hash = poseidon2::Poseidon2::hash(input, input.len());
+    let expected = 0x0f1badcd0d52ced816fb6e6826fdf66ada038135d53cbb993f320ca6529223cd;
     assert_eq(hash, expected);
 }
