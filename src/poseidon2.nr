@@ -69,6 +69,12 @@ impl Poseidon2 {
                 state[2] += input[i * RATE + 2];
                 state = crate::poseidon2_permutation(state, 4);
             }
+
+            // handle remaining elements after last full RATE-sized chunk
+            let remainder_start = (in_len / RATE) * RATE;
+            for j in remainder_start..in_len {
+                state[j - remainder_start] += input[j];
+            }
         } else {
             let mut states: [[Field; 4]; N / RATE + 1] = [[0; 4]; N / RATE + 1];
             states[0] = state;
@@ -85,12 +91,13 @@ impl Poseidon2 {
             // get state at the last full block before in_len
             let first_partially_filled_chunk = in_len / RATE;
             state = states[first_partially_filled_chunk];
-        }
 
-        // handle remaining elements after last full RATE-sized chunk
-        let remainder_start = (in_len / RATE) * RATE;
-        for j in remainder_start..in_len {
-            state[j - remainder_start] += input[j];
+            // handle remaining elements after last full RATE-sized chunk
+            let remainder_start = (in_len / RATE) * RATE;
+            for j in 0..RATE {
+                let idx = remainder_start + j;
+                state[j] += input[idx] * (idx < in_len) as Field;
+            }
         }
 
         // always run final permutation unless we just completed a full chunk
