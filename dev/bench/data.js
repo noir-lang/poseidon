@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1768840013143,
+  "lastUpdate": 1768840013919,
   "repoUrl": "https://github.com/noir-lang/poseidon",
   "entries": {
     "ACIR Opcodes": [
@@ -2005,6 +2005,105 @@ window.BENCHMARK_DATA = {
           "url": "https://github.com/noir-lang/poseidon/commit/845fac91fb3ba4a9c9434fe11a90f647a4137576"
         },
         "date": 1768839959641,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "poseidon2_hash_1.json/main",
+            "value": 130,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "poseidon2_hash_10.json/main",
+            "value": 355,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "poseidon2_hash_2.json/main",
+            "value": 130,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "poseidon2_hash_20.json/main",
+            "value": 584,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "poseidon2_hash_4.json/main",
+            "value": 203,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "poseidon2_hash_8.json/main",
+            "value": 280,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "poseidon_hash_1.json/main",
+            "value": 458,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "poseidon_hash_2.json/main",
+            "value": 983,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "poseidon_hash_4.json/main",
+            "value": 1236,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "poseidon_hash_8.json/main",
+            "value": 1704,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "poseidon_sponge_1.json/main",
+            "value": 1218,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "poseidon_sponge_16.json/main",
+            "value": 4806,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "poseidon_sponge_32.json/main",
+            "value": 9566,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "poseidon_sponge_4.json/main",
+            "value": 1236,
+            "unit": "circuit_size"
+          },
+          {
+            "name": "poseidon_sponge_8.json/main",
+            "value": 2426,
+            "unit": "circuit_size"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "163862677+noirwhal@users.noreply.github.com",
+            "name": "noirwhal",
+            "username": "noirwhal"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "0ddc8184c6af5e8058095bb047027423b6d0a512",
+          "message": "chore: Release 0.2.2 (#34)",
+          "timestamp": "2026-01-19T16:26:37Z",
+          "tree_id": "13ce7c60385e7dd7c3d18471fd4802e253d61935",
+          "url": "https://github.com/noir-lang/poseidon/commit/0ddc8184c6af5e8058095bb047027423b6d0a512"
+        },
+        "date": 1768840013896,
         "tool": "customSmallerIsBetter",
         "benches": [
           {
