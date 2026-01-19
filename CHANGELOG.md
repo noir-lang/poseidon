@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.2](https://github.com/noir-lang/poseidon/compare/v0.2.1...v0.2.2) (2026-01-19)
+
+
+### Bug Fixes
+
+* Remove OOB read from cache and unnecessary zeroing in `perform_duplex`  ([#33](https://github.com/noir-lang/poseidon/issues/33)) ([845fac9](https://github.com/noir-lang/poseidon/commit/845fac91fb3ba4a9c9434fe11a90f647a4137576))
+
 ## [0.2.1](https://github.com/noir-lang/poseidon/compare/v0.2.0...v0.2.1) (2026-01-16)
 
 
