@@ -28,7 +28,6 @@ impl Poseidon2 {
         self.state[0] += self.cache[0] * (0 < self.cache_size) as Field;
         self.state[1] += self.cache[1] * (1 < self.cache_size) as Field;
         self.state[2] += self.cache[2] * (2 < self.cache_size) as Field;
-        self.state[3] += self.cache[3] * (3 < self.cache_size) as Field;
         self.state = crate::poseidon2_permutation(self.state, 4);
     }
 
@@ -133,6 +132,6 @@ impl Hasher for Poseidon2Hasher {
 
 impl Default for Poseidon2Hasher {
     fn default() -> Self {
-        Poseidon2Hasher { _state: &[] }
+        Poseidon2Hasher { _state: @[] }
     }
 }
