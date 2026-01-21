@@ -70,9 +70,13 @@ impl Poseidon2 {
             }
 
             // handle remaining elements after last full RATE-sized chunk
-            let remainder_start = (in_len / RATE) * RATE;
-            for j in remainder_start..in_len {
-                state[j - remainder_start] += input[j];
+            let num_extra_fields = in_len % RATE;
+            if num_extra_fields != 0 {
+                let remainder_start = in_len - num_extra_fields;
+                state[0] += input[remainder_start];
+                if num_extra_fields > 1 {
+                    state[1] += input[remainder_start + 1]
+                }
             }
         } else {
             let mut states: [[Field; 4]; N / RATE + 1] = [[0; 4]; N / RATE + 1];
