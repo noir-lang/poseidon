@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.3](https://github.com/noir-lang/poseidon/compare/v0.2.2...v0.2.3) (2026-01-22)
+
+
+### Features
+
+* Remove unnecessary state write ([#36](https://github.com/noir-lang/poseidon/issues/36)) ([32407a5](https://github.com/noir-lang/poseidon/commit/32407a5faf3e2c0fb869e182a1e9af097a7ef61a))
+
 ## [0.2.2](https://github.com/noir-lang/poseidon/compare/v0.2.1...v0.2.2) (2026-01-19)
 
 
