@@ -1,7 +1,7 @@
 use std::default::Default;
 use std::hash::Hasher;
 
-comptime global RATE: u32 = 3;
+global RATE: u32 = 3;
 
 pub struct Poseidon2 {
     cache: [Field; 3],
