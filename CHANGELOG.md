@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.4](https://github.com/noir-lang/poseidon/compare/v0.2.3...v0.2.4) (2026-02-18)
+
+
+### Bug Fixes
+
+* Make RATE no longer comptime ([#38](https://github.com/noir-lang/poseidon/issues/38)) ([b1049a2](https://github.com/noir-lang/poseidon/commit/b1049a222013870270488d3bc5f6f9205e6f1421))
+
 ## [0.2.3](https://github.com/noir-lang/poseidon/compare/v0.2.2...v0.2.3) (2026-01-22)
 
 
