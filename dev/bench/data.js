@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1771444584998,
+  "lastUpdate": 1771584137263,
   "repoUrl": "https://github.com/noir-lang/poseidon",
   "entries": {
     "ACIR Opcodes": [
@@ -1409,6 +1409,105 @@ window.BENCHMARK_DATA = {
           "url": "https://github.com/noir-lang/poseidon/commit/7473b34abf01299b94ed3ccc096e65fd0c94370a"
         },
         "date": 1771444582472,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "poseidon2_hash_1.json/main",
+            "value": 4,
+            "unit": "acir_opcodes"
+          },
+          {
+            "name": "poseidon2_hash_10.json/main",
+            "value": 13,
+            "unit": "acir_opcodes"
+          },
+          {
+            "name": "poseidon2_hash_2.json/main",
+            "value": 4,
+            "unit": "acir_opcodes"
+          },
+          {
+            "name": "poseidon2_hash_20.json/main",
+            "value": 26,
+            "unit": "acir_opcodes"
+          },
+          {
+            "name": "poseidon2_hash_4.json/main",
+            "value": 5,
+            "unit": "acir_opcodes"
+          },
+          {
+            "name": "poseidon2_hash_8.json/main",
+            "value": 10,
+            "unit": "acir_opcodes"
+          },
+          {
+            "name": "poseidon_hash_1.json/main",
+            "value": 335,
+            "unit": "acir_opcodes"
+          },
+          {
+            "name": "poseidon_hash_2.json/main",
+            "value": 318,
+            "unit": "acir_opcodes"
+          },
+          {
+            "name": "poseidon_hash_4.json/main",
+            "value": 392,
+            "unit": "acir_opcodes"
+          },
+          {
+            "name": "poseidon_hash_8.json/main",
+            "value": 528,
+            "unit": "acir_opcodes"
+          },
+          {
+            "name": "poseidon_sponge_1.json/main",
+            "value": 379,
+            "unit": "acir_opcodes"
+          },
+          {
+            "name": "poseidon_sponge_16.json/main",
+            "value": 1592,
+            "unit": "acir_opcodes"
+          },
+          {
+            "name": "poseidon_sponge_32.json/main",
+            "value": 3192,
+            "unit": "acir_opcodes"
+          },
+          {
+            "name": "poseidon_sponge_4.json/main",
+            "value": 392,
+            "unit": "acir_opcodes"
+          },
+          {
+            "name": "poseidon_sponge_8.json/main",
+            "value": 792,
+            "unit": "acir_opcodes"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "15848336+TomAFrench@users.noreply.github.com",
+            "name": "Tom French",
+            "username": "TomAFrench"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "d543013df3dc49e8bfc2b7b269252083e0c4fad7",
+          "message": "fix: add missing semicolon (#40)",
+          "timestamp": "2026-02-20T10:41:57Z",
+          "tree_id": "d0d1e815a9462d70671560c9603775fa99238496",
+          "url": "https://github.com/noir-lang/poseidon/commit/d543013df3dc49e8bfc2b7b269252083e0c4fad7"
+        },
+        "date": 1771584136938,
         "tool": "customSmallerIsBetter",
         "benches": [
           {
