@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.5](https://github.com/noir-lang/poseidon/compare/v0.2.4...v0.2.5) (2026-02-20)
+
+
+### Bug Fixes
+
+* Add missing semicolon ([#40](https://github.com/noir-lang/poseidon/issues/40)) ([d543013](https://github.com/noir-lang/poseidon/commit/d543013df3dc49e8bfc2b7b269252083e0c4fad7))
+
 ## [0.2.4](https://github.com/noir-lang/poseidon/compare/v0.2.3...v0.2.4) (2026-02-18)
 
 
