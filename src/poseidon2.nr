@@ -75,7 +75,7 @@ impl Poseidon2 {
                 let remainder_start = in_len - num_extra_fields;
                 state[0] += input[remainder_start];
                 if num_extra_fields > 1 {
-                    state[1] += input[remainder_start + 1]
+                    state[1] += input[remainder_start + 1];
                 }
             }
         } else {
