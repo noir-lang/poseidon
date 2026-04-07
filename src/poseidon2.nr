@@ -28,7 +28,7 @@ impl Poseidon2 {
         self.state[0] += self.cache[0];
         self.state[1] += self.cache[1];
         self.state[2] += self.cache[2];
-        self.state = crate::poseidon2_permutation(self.state, 4);
+        self.state = crate::poseidon2_permutation(self.state);
     }
 
     fn absorb(&mut self, input: Field) {
@@ -66,7 +66,7 @@ impl Poseidon2 {
                 state[0] += input[i * RATE];
                 state[1] += input[i * RATE + 1];
                 state[2] += input[i * RATE + 2];
-                state = crate::poseidon2_permutation(state, 4);
+                state = crate::poseidon2_permutation(state);
             }
 
             // handle remaining elements after last full RATE-sized chunk
@@ -87,7 +87,7 @@ impl Poseidon2 {
                 for i in 0..RATE {
                     state[i] += input[chunk_idx * RATE + i];
                 }
-                state = crate::poseidon2_permutation(state, 4);
+                state = crate::poseidon2_permutation(state);
                 states[chunk_idx + 1] = state;
             }
 
@@ -108,7 +108,7 @@ impl Poseidon2 {
         // always run final permutation unless we just completed a full chunk
         // still need to permute once if in_len is 0
         if (in_len == 0) | (in_len % RATE != 0) {
-            state = crate::poseidon2_permutation(state, 4);
+            state = crate::poseidon2_permutation(state);
         };
 
         state[0]
@@ -136,6 +136,6 @@ impl Hasher for Poseidon2Hasher {
 
 impl Default for Poseidon2Hasher {
     fn default() -> Self {
-        Poseidon2Hasher { _state: &[] }
+        Poseidon2Hasher { _state: @[] }
     }
 }
