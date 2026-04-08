@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.3.0](https://github.com/noir-lang/poseidon/compare/v0.2.6...v0.3.0) (2026-04-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* update to new stdlib interface ([#46](https://github.com/noir-lang/poseidon/issues/46))
+
+### Bug Fixes
+
+* Update to new stdlib interface ([#46](https://github.com/noir-lang/poseidon/issues/46)) ([a5e1dd1](https://github.com/noir-lang/poseidon/commit/a5e1dd1185a7e3b9ef47d35bc123b7e8b9282ba6))
+
 ## [0.2.6](https://github.com/noir-lang/poseidon/compare/v0.2.5...v0.2.6) (2026-02-20)
 
 
