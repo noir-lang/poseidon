@@ -2,8 +2,8 @@ name: Benchmarks
 
 on:
   push:
-   branches:
-    - master
+    branches:
+      - master
   pull_request:
 
 jobs:
@@ -17,7 +17,7 @@ jobs:
       contents: write
       # pull-requests permission to comment on PRs with benchmark results
       pull-requests: write
-    
+
     steps:
       - name: Checkout sources
         uses: actions/checkout@v4
@@ -25,21 +25,20 @@ jobs:
       - name: Install Nargo
         uses: noir-lang/noirup@v0.1.4
         with:
-          toolchain: 1.0.0-beta.17
+          toolchain: nightly-2026-04-08
 
       - name: Install bb
         run: |
-          curl -L https://raw.githubusercontent.com/AztecProtocol/aztec-packages/refs/heads/next/barretenberg/bbup/install | bash
-          ~/.bb/bbup -nv 1.0.0-beta.17
+          curl -L https://bbup.aztec.network | bash
+          ~/.bb/bbup -v 4.0.0-nightly.20260120
 
       - name: Build Noir benchmark programs
         run: nargo export
-      
+
       - name: Generate gate report
         run: ./scripts/build-gates-report.sh
         env:
-            BACKEND: /home/runner/.bb/bb
-
+          BACKEND: /home/runner/.bb/bb
 
       - name: Store ACIR opcode benchmark result
         uses: benchmark-action/github-action-benchmark@v1
