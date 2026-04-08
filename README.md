@@ -22,7 +22,9 @@ The benchmark will be generated at `./gates_report.json`.
 
 In your _Nargo.toml_ file, add the version of this library you would like to install under dependency:
 
+<!-- x-release-please-start-version -->
 ```toml
 [dependencies]
-poseidon = { tag = "v0.1.1", git = "https://github.com/noir-lang/poseidon" }
+poseidon = { tag = "v0.2.6", git = "https://github.com/noir-lang/poseidon" }
 ```
+<!-- x-release-please-end -->
