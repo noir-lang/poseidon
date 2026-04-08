@@ -352,6 +352,6 @@ impl Hasher for PoseidonHasher {
 
 impl Default for PoseidonHasher {
     fn default() -> Self {
-        PoseidonHasher { _state: &[] }
+        PoseidonHasher { _state: @[] }
     }
 }
