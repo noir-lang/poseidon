@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1771585070946,
+  "lastUpdate": 1775637414273,
   "repoUrl": "https://github.com/noir-lang/poseidon",
   "entries": {
     "ACIR Opcodes": [
@@ -1840,6 +1840,105 @@ window.BENCHMARK_DATA = {
           {
             "name": "poseidon_hash_1.json/main",
             "value": 335,
+            "unit": "acir_opcodes"
+          },
+          {
+            "name": "poseidon_hash_2.json/main",
+            "value": 318,
+            "unit": "acir_opcodes"
+          },
+          {
+            "name": "poseidon_hash_4.json/main",
+            "value": 392,
+            "unit": "acir_opcodes"
+          },
+          {
+            "name": "poseidon_hash_8.json/main",
+            "value": 528,
+            "unit": "acir_opcodes"
+          },
+          {
+            "name": "poseidon_sponge_1.json/main",
+            "value": 379,
+            "unit": "acir_opcodes"
+          },
+          {
+            "name": "poseidon_sponge_16.json/main",
+            "value": 1592,
+            "unit": "acir_opcodes"
+          },
+          {
+            "name": "poseidon_sponge_32.json/main",
+            "value": 3192,
+            "unit": "acir_opcodes"
+          },
+          {
+            "name": "poseidon_sponge_4.json/main",
+            "value": 392,
+            "unit": "acir_opcodes"
+          },
+          {
+            "name": "poseidon_sponge_8.json/main",
+            "value": 792,
+            "unit": "acir_opcodes"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "15848336+TomAFrench@users.noreply.github.com",
+            "name": "Tom French",
+            "username": "TomAFrench"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "a5e1dd1185a7e3b9ef47d35bc123b7e8b9282ba6",
+          "message": "fix!: update to new stdlib interface (#46)",
+          "timestamp": "2026-04-08T09:36:35+01:00",
+          "tree_id": "b0e29103b485a5b6978cee89c00713536645c996",
+          "url": "https://github.com/noir-lang/poseidon/commit/a5e1dd1185a7e3b9ef47d35bc123b7e8b9282ba6"
+        },
+        "date": 1775637413358,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "poseidon2_hash_1.json/main",
+            "value": 4,
+            "unit": "acir_opcodes"
+          },
+          {
+            "name": "poseidon2_hash_10.json/main",
+            "value": 13,
+            "unit": "acir_opcodes"
+          },
+          {
+            "name": "poseidon2_hash_2.json/main",
+            "value": 4,
+            "unit": "acir_opcodes"
+          },
+          {
+            "name": "poseidon2_hash_20.json/main",
+            "value": 26,
+            "unit": "acir_opcodes"
+          },
+          {
+            "name": "poseidon2_hash_4.json/main",
+            "value": 5,
+            "unit": "acir_opcodes"
+          },
+          {
+            "name": "poseidon2_hash_8.json/main",
+            "value": 10,
+            "unit": "acir_opcodes"
+          },
+          {
+            "name": "poseidon_hash_1.json/main",
+            "value": 330,
             "unit": "acir_opcodes"
           },
           {
