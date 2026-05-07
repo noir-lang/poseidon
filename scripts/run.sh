@@ -15,7 +15,7 @@ trap cleanup EXIT
 
 # Build TypeScript first
 echo "Building TypeScript..."
-yarn --cwd "$project_dir" build
+yarn build
 
 # Start TypeScript RPC server in background
 echo "Starting TypeScript RPC server..."
