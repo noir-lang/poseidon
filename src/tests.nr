@@ -1,4 +1,7 @@
 use super::{poseidon, poseidon2};
+use super::poseidon2::{Poseidon2, Poseidon2Hasher};
+use std::default::Default;
+use std::hash::Hasher;
 
 #[test]
 fn reference_impl_test_vectors() {
@@ -88,4 +91,16 @@ fn test_poseidon2_3() {
     let hash = poseidon2::Poseidon2::hash(input, input.len());
     let expected = 0x0f1badcd0d52ced816fb6e6826fdf66ada038135d53cbb993f320ca6529223cd;
     assert_eq(hash, expected);
+}
+
+#[test]
+fn test_regression_perform_duplex_stale_cache() {
+    let a = [1, 2, 3, 4];
+    let h_hash = Poseidon2::hash(a, 4);
+    let mut hasher: Poseidon2Hasher = Default::default();
+    for x in a {
+        hasher.write(x);
+    }
+    let h_finish = hasher.finish();
+    assert_eq(h_hash, h_finish);
 }
