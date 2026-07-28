@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.4.0](https://github.com/noir-lang/poseidon/compare/v0.3.0...v0.4.0) (2026-07-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* perform_duplex ignores cache_size ([#48](https://github.com/noir-lang/poseidon/issues/48))
+
+### Bug Fixes
+
+* Perform_duplex ignores cache_size ([#48](https://github.com/noir-lang/poseidon/issues/48)) ([f249446](https://github.com/noir-lang/poseidon/commit/f249446e6e01f7b607ad35351cebe0cc20068cb7))
+
 ## [0.3.0](https://github.com/noir-lang/poseidon/compare/v0.2.6...v0.3.0) (2026-04-08)
 
 
